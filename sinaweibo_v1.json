@@ -1,0 +1,189 @@
+{
+  "settings": {
+    "number_of_shards": 1,
+    "number_of_replicas": 1,
+    "index.mapper.dynamic": false,
+    "analysis": {
+      "analyzer": {
+        "default": {
+          "tokenizer": "ecjk",
+          "alias": [
+            "chinese"
+          ],
+          "filter": [
+            "lowercase"
+          ]
+        }
+      }
+    }
+  },
+  "mappings": {
+    "status": {
+      "dynamic": "no",
+      "include_in_all": false,
+      "properties": {
+        "created_at": {
+          "type": "date",
+          "format": "epoch_second"
+        },
+        "id": {
+          "type": "long"
+        },
+        "text": {
+          "type": "string",
+          "include_in_all": true
+        },
+        "source": {
+          "type": "string",
+          "index": "not_analyzed"
+        },
+        "favorited": {
+          "type": "boolean"
+        },
+        "truncated": {
+          "type": "boolean"
+        },
+        "in_reply_to_status_id": {
+          "type": "string",
+          "index": "not_analyzed"
+        },
+        "in_reply_to_user_id": {
+          "type": "string",
+          "index": "not_analyzed"
+        },
+        "in_reply_to_screen_name": {
+          "type": "string",
+          "index": "not_analyzed",
+          "include_in_all": true
+        },
+        "geo": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "index": "not_analyzed"
+            },
+            "coordinates": {
+              "type": "geo_point"
+            }
+          }
+        },
+        "mid": {
+          "type": "string",
+          "index": "not_analyzed",
+          "include_in_all": false
+        },
+        "reposts_count": {
+          "type": "integer"
+        },
+        "comments_count": {
+          "type": "integer"
+        },
+        "user": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "long"
+            },
+            "screen_name": {
+              "type": "string",
+              "index": "not_analyzed",
+              "include_in_all": true
+            },
+            "name": {
+              "type": "string",
+              "index": "not_analyzed",
+              "include_in_all": true
+            },
+            "province": {
+              "type": "string",
+              "index": "not_analyzed"
+            },
+            "city": {
+              "type": "string",
+              "index": "not_analyzed"
+            },
+            "location": {
+              "type": "string",
+              "analyzer": "whitespace",
+              "include_in_all":true
+            },
+            "description": {
+              "type": "string",
+              "include_in_all": true
+            },
+            "url": {
+              "type": "string",
+              "index": "not_analyzed"
+            },
+            "profile_image_url": {
+              "type": "string",
+              "index": "not_analyzed"
+            },
+            "domain": {
+              "type": "string",
+              "index": "not_analyzed",
+              "include_in_all": true
+            },
+            "gender": {
+              "type": "string",
+              "index": "not_analyzed"
+            },
+            "followers_count": {
+              "type": "integer"
+            },
+            "friends_count": {
+              "type": "integer"
+            },
+            "statuses_count": {
+              "type": "integer"
+            },
+            "favourites_count": {
+              "type": "integer"
+            },
+            "created_at": {
+              "type": "date",
+              "format": "epoch_second"
+            },
+            "following": {
+              "type": "boolean"
+            },
+            "allow_all_act_msg": {
+              "type": "boolean"
+            },
+            "remark": {
+              "type": "string"
+            },
+            "geo_enabled": {
+              "type": "boolean"
+            },
+            "verified": {
+              "type": "boolean"
+            },
+            "allow_all_comment": {
+              "type": "boolean"
+            },
+            "avatar_large": {
+              "type": "string",
+              "index": "not_analyzed"
+            },
+            "verified_reason": {
+              "type": "string",
+              "include_in_all": true
+            },
+            "follow_me": {
+              "type": "boolean"
+            },
+            "online_status": {
+              "type": "integer"
+            },
+            "bi_followers_count": {
+              "type": "integer"
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
